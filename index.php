@@ -28,6 +28,7 @@
         <div class="container">
             <div class="row justify-content-center">
                 <form action="process.php" method="POST">
+                    <input type="hidden" name="id" value="<?php @$id ?>">
                     <div class="form-group">
                     <label>Name:</label>
                     <input class="form-control" type="text" name="name" value="<?php echo @$name ?>" placeholder="Enter Your Name:">
@@ -46,7 +47,6 @@
                     <div class="form-group">
                     <?php if($update == true): ?>
                     <button class="btn btn-primary" type="submit" name="update">Update</button>
-                    <input type="hidden" name="id" value="<?php @$id ?>">
                     <?php else: ?>
                     <button class="btn btn-primary" type="submit" name="submit">Submit</button>
                     <?php endif; ?>
