@@ -32,7 +32,7 @@ if (isset($_POST['submit'])){
 
     header("location: index.php");
 }
-
+$id = 0;
 if (isset($_GET['edit'])){
     
     $id = $_GET['edit'];

@@ -28,7 +28,7 @@
         <div class="container">
             <div class="row justify-content-center">
                 <form action="process.php" method="POST">
-                    <input type="hidden" name="id" value="<?php @$id ?>">
+                    <input type="hidden" name="id" value="<?php $id; ?>">
                     <div class="form-group">
                     <label>Name:</label>
                     <input class="form-control" type="text" name="name" value="<?php echo @$name ?>" placeholder="Enter Your Name:">
