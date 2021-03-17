@@ -61,14 +61,13 @@ if (isset($_POST['update'])){
     // $mysqli->query($query) or
     // die($mysqli->error);
 
-	mysqli_query($con, "UPDATE data SET name='$name', level='$level', address='$address' WHERE id=$id");
+	mysqli_query($con, "UPDATE `data` SET name='$name', level='$level', address='$address' WHERE id=$id");
     
     $_SESSION['message'] = "Record has been updated!";
     $_SESSION['msg_type'] = "success";
 
     header("location: index.php"); 
 }
-
  
 if (isset($_GET['delete'])){
 
