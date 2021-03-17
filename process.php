@@ -23,10 +23,10 @@ if (isset($_POST['submit'])){
 
     $name = $_POST['name'];
     $level = $_POST['level'];
-    $gmail_address = $_POST['gmail'];
+    $address = $_POST['gmail'];
 
     
-    $mysqli->query("INSERT INTO data (name, level, address) VALUES('$name', '$level', '$gmail_address')") or
+    $mysqli->query("INSERT INTO data (name, level, address) VALUES('$name', '$level', '$address')") or
     die($mysqli->error);
     
     $_SESSION['message'] = "Record has been saved!";
@@ -58,12 +58,12 @@ if (isset($_POST['update'])){
     $level = $_POST['level'];
     $address = $_POST['gmail'];
 
-    // $query = "UPDATE data SET name='$name', level='$level', address='$address' WHERE id='$id'";
+    $query = "UPDATE data SET name='$name', level='$level', address='$address' WHERE id='$id'";
 
-    // $mysqli->query($query) or
-    // die($mysqli->error);
+    $mysqli->query($query) or
+    die($mysqli->error);
 
-	mysqli_query($con, "UPDATE `data` SET name='$name', level='$level', address='$address' WHERE id=$id");
+	// mysqli_query($con, "UPDATE `data` SET name='$name', level='$level', address='$address' WHERE id=$id");
     
     $_SESSION['message'] = "Record has been updated!";
     $_SESSION['msg_type'] = "success";
