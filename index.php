@@ -57,8 +57,15 @@
             <br><br>
 
             <?php 
-            
-                $mysqli = new mysqli('127.0.0.1', 'root', '', 'crud') or die(mysqli_error($mysqli));
+                     
+                $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+
+                $server = $url["host"];
+                $username = $url["user"];
+                $password = $url["pass"];
+                $db = substr($url["path"], 1);
+
+                $mysqli = new mysqli($server, $username, $password, $db) or die(mysqli_error($mysqli));
                 $result = $mysqli->query("SELECT * FROM data") or die($mysqli->error);
             ?>
 
