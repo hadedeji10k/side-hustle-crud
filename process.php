@@ -14,9 +14,7 @@ $mysqli = new mysqli($server, $username, $password, $db) or die(mysqli_error($my
 // $mysqli = new mysqli('127.0.0.1', 'root', '', 'crud') or die(mysqli_error($mysqli));
 
 $update = false;
-$name = '';
-$level = '';
-$address = '';
+$name = $level = $address = '';
 $id = 0;
 
 
@@ -31,7 +29,7 @@ if (isset($_POST['submit'])){
     die($mysqli->error);
     
     $_SESSION['message'] = "Record has been saved!";
-    $_SESSION['msg_type'] = "success";
+    $_SESSION['alert'] = "success";
 
     header("location: index.php");
 }
@@ -46,10 +44,10 @@ if (isset($_GET['edit'])){
     $user_data = $mysqli->query("SELECT * FROM data WHERE id=$id") or die($mysqli->error);
 
 
-    $row = $user_data->fetch_array();
-    $name = $row['name'];
-    $level = $row['level'];
-    $address = $row['address'];
+    $user = $user_data->fetch_array();
+    $name = $user['name'];
+    $level = $user['level'];
+    $address = $user['address'];
 
 }
 
@@ -64,11 +62,9 @@ if (isset($_POST['update'])){
 
     $mysqli->query($query) or
     die($mysqli->error);
-
-	// mysqli_query($con, "UPDATE `data` SET name='$name', level='$level', address='$address' WHERE id=$id");
     
     $_SESSION['message'] = "Record has been updated!";
-    $_SESSION['msg_type'] = "success";
+    $_SESSION['alert'] = "success";
 
     header("location: index.php"); 
 }
@@ -81,7 +77,7 @@ if (isset($_GET['delete'])){
     die($mysqli->error);
 
     $_SESSION['message'] = "Record has been deleted!";
-    $_SESSION['msg_type'] = "danger";
+    $_SESSION['alert'] = "danger";
 
     header("location: index.php");
 }

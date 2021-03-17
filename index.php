@@ -16,7 +16,7 @@
 
             if(isset($_SESSION['message'])): ?>
 
-                    <div class="alert alert-<?=$_SESSION['msg_type']?>"> 
+                    <div class="alert alert-<?=$_SESSION['alert']?>"> 
                         <?php 
                             echo $_SESSION['message'];
                             unset($_SESSION['message']);
@@ -28,7 +28,6 @@
         <div class="container">
             <div class="row justify-content-center">
                 <form action="process.php" method="POST">
-                    <input type="hidden" name="id" value="<?php $id; ?>">
                     <div class="form-group">
                     <label>Name:</label>
                     <input class="form-control" type="text" name="name" value="<?php echo $name; ?>" placeholder="Enter Your Name:">
@@ -43,6 +42,8 @@
                     <label>Your Gmail:</label>
                     <input class="form-control" type="email" name="gmail" value="<?php echo $address; ?>" placeholder="Enter Your Gmail:">
                     </div>
+                    
+                    <input type="hidden" name="id" value="<?php $id; ?>">
 
                     <div class="form-group">
                     <?php if($update == true): ?>
@@ -66,7 +67,7 @@
                 $db = substr($url["path"], 1);
 
                 $mysqli = new mysqli($server, $username, $password, $db) or die(mysqli_error($mysqli));
-                $result = $mysqli->query("SELECT * FROM data") or die($mysqli->error);
+                $user_data = $mysqli->query("SELECT * FROM data") or die($mysqli->error);
             ?>
 
             <div class="row justify-content-center">
@@ -82,15 +83,15 @@
                     </thead>
 
                     <?php 
-                    while ($row = $result->fetch_assoc()): ?>
+                    while ($user = $user_data->fetch_assoc()): ?>
 
                     <tr>
-                        <td><?php echo $row['name']; ?></td>
-                        <td><?php echo $row['level']; ?></td>
-                        <td><?php echo $row['address']; ?></td>
+                        <td><?php echo $user['name']; ?></td>
+                        <td><?php echo $user['level']; ?></td>
+                        <td><?php echo $user['address']; ?></td>
                         <td>
-                            <a class="btn btn-info" href="index.php?edit=<?php echo $row['id']; ?>">Edit</a>
-                            <a class="btn btn-danger" href="process.php?delete=<?php echo $row['id']; ?>">Delete</a>
+                            <a class="btn btn-info" href="index.php?edit=<?php echo $user['id']; ?>">Edit</a>
+                            <a class="btn btn-danger" href="process.php?delete=<?php echo $user['id']; ?>">Delete</a>
                         </td>
                     </tr>
 
