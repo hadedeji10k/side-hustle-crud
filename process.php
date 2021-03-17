@@ -16,6 +16,8 @@ $mysqli = new mysqli($server, $username, $password, $db) or die(mysqli_error($my
 $con = mysqli_connect($server, $username, $password, $db);
 
 $update = false;
+$name = $level = $address = '';
+
 
 if (isset($_POST['submit'])){
 

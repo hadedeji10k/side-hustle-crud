@@ -31,17 +31,17 @@
                     <input type="hidden" name="id" value="<?php $id; ?>">
                     <div class="form-group">
                     <label>Name:</label>
-                    <input class="form-control" type="text" name="name" value="<?php echo @$name ?>" placeholder="Enter Your Name:">
+                    <input class="form-control" type="text" name="name" value="<?php echo $name; ?>" placeholder="Enter Your Name:">
                     </div>
 
                     <div class="form-group">
                     <label>Side Hustle Level:</label>
-                    <input class="form-control" type="text" name="level" value="<?php echo @$level ?>" placeholder="Enter Your Side Hustle Level:">
+                    <input class="form-control" type="text" name="level" value="<?php echo $level; ?>" placeholder="Enter Your Side Hustle Level:">
                     </div>
 
                     <div class="form-group">
                     <label>Your Gmail:</label>
-                    <input class="form-control" type="email" name="gmail" value="<?php echo @$address ?>" placeholder="Enter Your Gmail:">
+                    <input class="form-control" type="email" name="gmail" value="<?php echo $address; ?>" placeholder="Enter Your Gmail:">
                     </div>
 
                     <div class="form-group">
