@@ -69,7 +69,7 @@ if (isset($_POST['update'])){
     $level = $_POST['level'];
     $address = $_POST['gmail'];
 
-    $query = "UPDATE data SET name='$name', level='$level', address='$address' WHERE id='$id'";
+    $query = "UPDATE `data` SET name='$name', level='$level', address='$address' WHERE id='$id'";
 
     $mysqli->query($query) or
     die($mysqli->error);
