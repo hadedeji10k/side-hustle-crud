@@ -13,8 +13,6 @@ $mysqli = new mysqli($server, $username, $password, $db) or die(mysqli_error($my
 
 // $mysqli = new mysqli('127.0.0.1', 'root', '', 'crud') or die(mysqli_error($mysqli));
 
-$con = mysqli_connect($server, $username, $password, $db);
-
 $update = false;
 $name = $level = $address = '';
 
@@ -58,7 +56,7 @@ if (isset($_POST['update'])){
     $level = $_POST['level'];
     $address = $_POST['gmail'];
 
-    $query = "UPDATE data SET name='$name', level='$level', address='$address' WHERE id='$id'";
+    $query = "UPDATE data SET name='$name', level='$level', address='$address' WHERE id=$id";
 
     $mysqli->query($query) or
     die($mysqli->error);
