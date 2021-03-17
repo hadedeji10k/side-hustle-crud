@@ -2,8 +2,6 @@
 
 session_start();
 
-
-     
 $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 
 $server = $url["host"];
@@ -14,6 +12,8 @@ $db = substr($url["path"], 1);
 $mysqli = new mysqli($server, $username, $password, $db) or die(mysqli_error($mysqli));
 
 // $mysqli = new mysqli('127.0.0.1', 'root', '', 'crud') or die(mysqli_error($mysqli));
+
+$con = mysqli_connect($server, $username, $password, $db);
 
 $update = false;
 
@@ -54,12 +54,14 @@ if (isset($_POST['update'])){
     $id = $_POST['id'];
     $name = $_POST['name'];
     $level = $_POST['level'];
-    $gmail_address = $_POST['gmail'];
+    $address = $_POST['gmail'];
 
-    $query = "UPDATE data SET name='$name', level='$level', address='$gmail_address' WHERE id='$id'";
+    // $query = "UPDATE data SET name='$name', level='$level', address='$address' WHERE id='$id'";
 
-    $mysqli->query($query) or
-    die($mysqli->error);
+    // $mysqli->query($query) or
+    // die($mysqli->error);
+
+	mysqli_query($con, "UPDATE data SET name='$name', level='$level', address='$address' WHERE id=$id");
     
     $_SESSION['message'] = "Record has been updated!";
     $_SESSION['msg_type'] = "success";
