@@ -89,7 +89,7 @@
                         <td><?php echo $row['level']; ?></td>
                         <td><?php echo $row['address']; ?></td>
                         <td>
-                            <a class="btn btn-info" href="index.php?edit=<?php echo $row['id']; ?>">Edit</a>
+                            <a class="btn btn-info" href="process.php?edit=<?php echo $row['id']; ?>">Edit</a>
                             <a class="btn btn-danger" href="process.php?delete=<?php echo $row['id']; ?>">Delete</a>
                         </td>
                     </tr>
@@ -99,15 +99,6 @@
                 </table>
 
             </div>
-
-            <?php
-                function pre_r ($array) {
-                    echo '<pre>';
-                    print_r($array);
-                    echo '</pre>';
-                }
-
-            ?>
         </div>
 
     </body>

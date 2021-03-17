@@ -39,10 +39,10 @@ if (isset($_GET['edit'])){
 
     $update = true;
 
-    $result = $mysqli->query("SELECT * FROM data WHERE id=$id") or die($mysqli->error);
+    $user_data = $mysqli->query("SELECT * FROM data WHERE id=$id") or die($mysqli->error);
 
 
-    $row = $result->fetch_array();
+    $row = $user_data->fetch_array();
     $name = $row['name'];
     $level = $row['level'];
     $address = $row['address'];
@@ -56,7 +56,7 @@ if (isset($_POST['update'])){
     $level = $_POST['level'];
     $address = $_POST['gmail'];
 
-    $query = "UPDATE data SET name='$name', level='$level', address='$address' WHERE id=$id";
+    $query = "UPDATE data SET name='$name', level='$level', address='$address' WHERE id='$id'";
 
     $mysqli->query($query) or
     die($mysqli->error);
