@@ -14,7 +14,10 @@ $mysqli = new mysqli($server, $username, $password, $db) or die(mysqli_error($my
 // $mysqli = new mysqli('127.0.0.1', 'root', '', 'crud') or die(mysqli_error($mysqli));
 
 $update = false;
-$name = $level = $address = '';
+$name = '';
+$level = '';
+$address = '';
+$id = 0;
 
 
 if (isset($_POST['submit'])){
@@ -32,7 +35,8 @@ if (isset($_POST['submit'])){
 
     header("location: index.php");
 }
-$id = 0;
+
+
 if (isset($_GET['edit'])){
     
     $id = $_GET['edit'];
