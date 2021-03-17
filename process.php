@@ -33,19 +33,6 @@ if (isset($_POST['submit'])){
     header("location: index.php");
 }
 
-if (isset($_GET['delete'])){
-
-    $id = $_GET['delete'];
-
-    $mysqli->query("DELETE FROM data WHERE id=$id") or
-    die($mysqli->error);
-
-    $_SESSION['message'] = "Record has been deleted!";
-    $_SESSION['msg_type'] = "danger";
-
-    header("location: index.php");
-}
-
 if (isset($_GET['edit'])){
     
     $id = $_GET['edit'];
@@ -67,9 +54,9 @@ if (isset($_POST['update'])){
     $id = $_POST['id'];
     $name = $_POST['name'];
     $level = $_POST['level'];
-    $address = $_POST['gmail'];
+    $gmail_address = $_POST['gmail'];
 
-    $query = "UPDATE `data` SET name='$name', level='$level', address='$address' WHERE id='$id'";
+    $query = "UPDATE data SET name='$name', level='$level', address='$gmail_address' WHERE id='$id'";
 
     $mysqli->query($query) or
     die($mysqli->error);
@@ -78,4 +65,18 @@ if (isset($_POST['update'])){
     $_SESSION['msg_type'] = "success";
 
     header("location: index.php"); 
+}
+
+ 
+if (isset($_GET['delete'])){
+
+    $id = $_GET['delete'];
+
+    $mysqli->query("DELETE FROM data WHERE id=$id") or
+    die($mysqli->error);
+
+    $_SESSION['message'] = "Record has been deleted!";
+    $_SESSION['msg_type'] = "danger";
+
+    header("location: index.php");
 }
